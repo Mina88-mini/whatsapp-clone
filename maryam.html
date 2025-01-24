@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+      margin: 0;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1f2c33;
+      color: #e9edef;
+    }
+    .main{
+      height: 100vh;
+    }
+    .whatsapp-head{
+        width: 100%;
+        height: 40px;
+        background-color: #1b1f22;
+        display: flex;
+        padding: 10px 0 5px 10px;
+        gap: 8px;
+        align-items: center;
+    }
+    .whatsapp-head i{
+        color: rgb(12, 160, 12);
+        font-size: 30px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 50px 300px auto;
+      height:calc(100% - 45px) ;
+    }
+.small-sidebar{
+    background-color: #1b1f22;
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+    }
+    .small-sidebar i{
+padding: 15px 0 10px 0;
+border: 1px solid #1b1f22;
+    }
+    .side-fonts{
+      width: 100%;
+    }
+    .small-sidebar i:hover{
+        background-color: #1b1f22;
+    }
+    .small-sidebar{
+      justify-content: space-between;
+    }
+    .profile{
+        border-top: 1px solid #a9b3b9;
+    }
+    .profile img{
+width: 35px;
+border-radius: 50%;
+padding-right: 5px;
+    }
+    .sidebar {
+      background-color: #2f3e47;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+    }
+
+    .sidebar-header {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .fonts a{
+        color: white;
+        padding: 6px;
+    }
+    .sidebar-header h1 {
+      font-size: 20px;
+    }
+
+    .search-bar {
+      padding: 10px 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      background-color: #3c4f55;
+      color: #f7f9fa;
+    }
+    .chat{
+      padding: 20px;
+      height: calc(100vh - 149px);
+      overflow: auto;
+    }
+    .chat-list {
+      flex: 1;
+      overflow-y: scroll;
+    }
+    .chat-list::-webkit-scrollbar{
+      width: 3px;
+    }
+    .chat-list::-webkit-scrollbar-track{
+      background-color: #a9b3b9;
+    }
+    .chat-item {
+      display: grid;
+      grid-template-columns: 50px 70px 1fr ;
+      padding: 10px 20px;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .chat-item:hover {
+      background-color: #3c4f55;
+    }
+
+    .chat-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .chat-item .info {
+      overflow: hidden;
+    }
+    .chat-item::-webkit-scrollbar {
+width: 4px;
+    }
+    .chat-item .info h3 {
+      font-size: 16px;
+      margin: 0;
+      color: #e9edef;
+      white-space: nowrap;
+    }
+
+    .chat-item .info p {
+      font-size: 14px;
+      color: #a9b3b9;
+      margin: 5px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chat-item .time {
+      font-size: 12px;
+      color: #a9b3b9;
+      text-align: right;
+    }
+
+    .main-chat {
+      background-color:  #2f3e47;
+   
+      border: 1px solid rgb(29, 44, 56);
+    }
+    .name-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgb(29, 44, 56);  
+      padding: 10px;
+      }
+      .profile-name{
+        display: flex;
+        align-items: center;
+      }
+      .profile-name img{
+border-radius: 50%;
+width: 60px;
+padding: 0 10px 0 10px;
+      }
+      .profile-fonts{
+        font-size: 18px;
+      }
+      .profile-fonts i{
+padding: 0 10px 0 10px;    
+  }
+  .maryam-chat{
+    /* text-align: right; */
+    margin-bottom: 5px;
+    display: flex;
+    border: 1px solid rgb(90, 89, 89);
+    background-color:rgb(90, 89, 89) ;
+    box-shadow: #2f3e47;
+    max-width: 400px;
+    width: fit-content;
+    padding: 6px;
+    justify-content: space-between;
+    border-radius: 6px;
+    align-items: end;
+    gap: 15px;
+  }
+  .maryam-chat p{
+    color: white;
+  }
+ .time{
+    color: #a9b3b9;
+    font-size: 10px;
+   min-width: 40px;
+  }
+  
+  .my-chat{
+    margin-left: auto;
+    display: flex;
+    border: 1px solid rgb(90, 89, 89);
+    background-color:rgb(90, 89, 89) ;
+    box-shadow: #2f3e47;
+    max-width: 400px;
+    width: fit-content;
+    padding: 6px;
+    justify-content: space-between;
+    border-radius: 6px;
+    align-items: end;
+    gap: 15px;
+  }
+  .my-chat p{
+    color: white;
+  }
+  .footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(29, 44, 56);  
+    padding:10px;
+    gap: 10px;
+  }
+  .footer i{
+    width: fit-content;
+    padding: 5px;
+  }
+  .footer input{
+    width:-webkit-fill-available ;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #2f3e47 ;
+    color: white;
+  }
+  /* .chat-scroll-bar::-webkit */
+</style>
+<body>
+ <div class="main">
+  <div class="whatsapp-head">
+    <i class="fa-brands fa-whatsapp"></i>
+    <p>WhatsApp</p>
+</div>
+<div class="container">
+ <div class="small-sidebar">
+   <div class="side-fonts">
+     <i class="fa-solid fa-bars"></i>
+    <i class="fa-brands fa-rocketchat"></i>
+    <i class="fa-solid fa-phone"></i>
+    <i class="fa-brands fa-algolia"></i>
+    <i style="border-top: 1px solid rgb(141, 140, 140); color: rgb(4, 112, 201); " class="fa-brands fa-meta"></i>
+</div>
+<div class="prfile-setting">
+  <div class="down-fonts">
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-trash-can"></i>
+  </div>
+  <div class="profile">
+    <i class="fa-solid fa-gear"></i>
+    <img src="duck.jpg" alt="">
+  </div>
+</div>
+ </div>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>Chats</h1>
+<div class="fonts">
+<a href=""><i class="fa-solid fa-bars-progress"></i></a>
+<a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+</div>
+</div>
+  <div class="search-bar">
+    <input type="search" placeholder="Search or start a new chat">
+  </div>
+  <div class="chat-list">
+    <a href="#">
+    <div class="chat-item">
+      <img src="dp.jpg" alt="Profile">
+    
+      <div class="info">
+        <h3>Maryam </h3>
+        <p>Alhamdulillah...</p>
+      </div>
+     
+      <div class="time">8:52 pm</div>
+    </div>
+  </a>
+    <div class="chat-item">
+      <img src="images.jpeg" alt="Profile">
+      <div class="info">
+        <h3>BsCS Girls Group</h3>
+        <p>Ok</p>
+      </div>
+      <div class="time">5:38 am</div>
+    </div>
+    <div class="chat-item">
+      <img src="tom.jpeg" alt="Profile">
+      <div class="info">
+        <h3>Juliet</h3>
+        <p>w.slam</p>
+      </div>
+      <div class="time">Yesterday</div>
+    </div>
+    <div class="chat-item">
+      <img src="flower.jpeg" alt="Profile">
+      <div class="info">
+        <h3>Mama</h3>
+        <p>thk h</p>
+      </div>
+      <div class="time">Yesterday</div>
+    </div>
+    <div class="chat-item">
+        <img src="dp.jpg" alt="Profile">
+        <div class="info">
+          <h3>Maryam </h3>
+          <p>Alhamdulillah...</p>
+        </div>
+        <div class="time">8:52 pm</div>
+      </div>
+      <div class="chat-item">
+        <img src="images.jpeg" alt="Profile">
+        <div class="info">
+          <h3>BsCS Girls Group</h3>
+          <p>Ok</p>
+        </div>
+        <div class="time">5:38 am</div>
+      </div>
+     
+  </div>
+</div>
+<div class="main-chat">
+  <div class="name-header">
+    <div class="profile-name">
+      <img src="dp.jpg" alt="wrong">
+    <h4>Maryam</h4>
+    </div>
+    <div class="profile-fonts">
+      <i class="fa-solid fa-video"></i>
+      <i class="fa-solid fa-phone"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+  </div>
+  <div class="chat">
+    <div class="maryam-chat">
+      <p>helo</p>
+      <div class="time">7:00 am</div>
+    </div>
+    <div class="my-chat">
+      <p>hi</p>
+      <div class="time">7:05 am</div>
+    </div>
+    <div class="maryam-chat">
+      <p>helo</p>
+      <div class="time">7:00 am</div>
+    </div>
+    <div class="my-chat">
+      <p>hi</p>
+      <div class="time">7:05 am</div>
+    </div>
+  <div class="maryam-chat">
+    <p>helo</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit corrupti praesentium doloremque pariatur perspiciatis quia quas enim hic sed.</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit corrupti praesentium doloremque pariatur perspiciatis quia quas enim hic sed.</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit corrupti praesentium doloremque pariatur perspiciatis quia quas enim hic sed.</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit corrupti praesentium doloremque pariatur perspiciatis quia quas enim hic sed.</p>
+    <div class="time">7:00 am</div>
+  </div>
+  <div class="my-chat">
+    <p>hi</p>
+    <div class="time">7:05 am</div>
+  </div>
+  <div class="maryam-chat">
+    <p>helo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit corrupti praesentium doloremque pariatur perspiciatis quia quas enim hic sed.</p>
+    <div class="time">7:00 am</div>
+  </div>
+</div>
+
+  <div class="footer">
+      <i class="fa-regular fa-face-smile"></i>
+    <i class="fa-solid fa-paperclip"></i>
+    <input type="text" placeholder="Type a message">
+    <i class="fa-solid fa-microphone"></i>
+
+  </div>
+</div>
+</div>
+ </div>
+</body>
+</html>
